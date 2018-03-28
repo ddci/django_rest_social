@@ -1,0 +1,19 @@
+{% extends "layouts/base_layout.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block head_title %}Login{% endblock head_title %}
+
+{% block head_ext %}
+    <link href="{% static "css/singin.css" %}" rel="stylesheet">
+{% endblock head_ext %}
+
+{% block content %}
+    <body class="text-center">
+    <form class="form-signin" method='POST' action='' enctype='multipart/form-data'>{% csrf_token %}
+        <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+        {{ form|crispy }}
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
+        <p class="mt-5 mb-3 text-muted">2018</p>
+    </form>
+    </body>
+{% endblock content %}

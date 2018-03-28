@@ -1,0 +1,88 @@
+{% extends "layouts/base_layout.html" %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+{% block head_title %}Posts{% endblock head_title %}
+{% block head_ext %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.9/css/all.css"
+          integrity="sha384-5SOiIsAziJl6AWe0HWRKTXlfcSHKmYV4RBF18PPJ173Kzn7jzMyFuTtk8JA7QQG1" crossorigin="anonymous">
+    <link href="{% static "css/posts.css" %}" rel="stylesheet">
+{% endblock head_ext %}
+
+{% block content %}
+    <body class="text-center">
+    <div class="container">
+        <div class="page-header">
+            <h1 id="timeline">Users Activity | Posts</h1>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if posts.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?{{ page_request_var }}={{ posts.previous_page_number }}"
+                           tabindex="-1">Previous</a>
+                    </li>
+                {% endif %}
+                <li class="page-item active"><a class="page-link" href="#">{{ posts.number }}</a></li>
+                {% if posts.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?{{ page_request_var }}={{ posts.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+                <li class="page-item">
+                    <a class="page-link" href="?{{ page_request_var }}={{ posts.paginator.num_pages }}">Last</a>
+                </li>
+            </ul>
+        </nav>
+        <ul class="timeline">
+            {% for post in posts %}
+                <li {% if forloop.counter0|divisibleby:2 %}class="timeline-inverted"{% endif %}>
+                    <div class="timeline-badge {% if forloop.counter0|divisibleby:2 %}info{% else %}success{% endif %}">
+                        <i class="fas fa-newspaper"></i></div>
+                    <div class="timeline-panel">
+                        <div class="timeline-heading">
+                            <h4 class="timeline-title">{{ post.title }}</h4>
+                            <p>
+                                <small class="text-muted"><i
+                                        class="fas fa-newspaper"></i>&nbsp;<b>ID {{ post.id }}</b>
+                                    Posted by <b
+                                            style="color:green">{{ post.posted_by }}
+                                        ({{ post.posted_by_full_name }})</b>
+                                </small>
+                            </p>
+                        </div>
+                        <div class="timeline-body">
+                            <p>{{ post.content }}</p>
+                        </div>
+                        <div class="timeline-footer">
+                            <span class="float-left fas fa-heart fa-lg" style="color:red;"></span>
+                            <i class="float-left">&nbsp;Liked by <b> {{ post.likes_number }}</b> users:</i>
+                            {% for username in post.liked_by_users %}
+                                <span class="badge badge-pill badge-info">{{ username }}</span>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                {% if posts.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?{{ page_request_var }}={{ posts.previous_page_number }}"
+                           tabindex="-1">Previous</a>
+                    </li>
+                {% endif %}
+                <li class="page-item active"><a class="page-link" href="#">{{ posts.number }}</a></li>
+                {% if posts.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?{{ page_request_var }}={{ posts.next_page_number }}">Next</a>
+                    </li>
+                {% endif %}
+                <li class="page-item">
+                    <a class="page-link" href="?{{ page_request_var }}={{ posts.paginator.num_pages }}">Last</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    </body>
+{% endblock content %}
