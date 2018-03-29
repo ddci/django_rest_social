@@ -25,7 +25,7 @@ This application requires Python 3.6.4.
 ![bot](https://github.com/ddci/django_rest_social/blob/master/view.png?raw=true)
 ### REST API Available Endpoints
 * /api/users/ — POST request with data fields [*email1*, *email*, *password*, *username*, *first_name (optional)*, *lastname (optional)*] returns 201 code with main info about new user (also Clearbit`s firstName or familyName);
-* /api/auth/ — POST request returns **JWT** token (Login);
+* /api/auth/ — POST request with body [*username*,*password*] returns **JWT** token (Login);
 
 **Next endpoints work only with JWT-token provided in Header with Bearer prefix.**
 * /api/posts/ — GET/POST, POST — creates new post entity required data parameters [*title*,*content*], GET  — returns pagable list of posts;
