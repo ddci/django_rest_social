@@ -2,10 +2,10 @@
 This application requires Python 3.6.4.
 1. Clone this repo.
 2. Create virtual environment.
-3. Install all dependencies from requirements.txt.
-```$ pip install -r requirements.txt```
-4. Activate virtualenv.
+3. Activate virtualenv.
 ```$ source venv/bin/activate```
+4. Install all dependencies from requirements.txt.
+```$ pip install -r requirements.txt```
 5. Fill in API-keys EMAIL_HUNTER_API_KEY and CLEARBIT_API_KEY  in settings.py, if variables ONLY_DELIVERABLE_EMAILS, CLEARBIT_ENRICHMENT_ENABLED set to True.
 6. Run migrate to create test SQLite DB.
 ```$ python manage.py migrate```
