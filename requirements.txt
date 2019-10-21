@@ -4,7 +4,7 @@ clearbit==0.1.7
 click==6.7
 Django==2.0.3
 django-crispy-forms==1.7.2
-djangorestframework==3.7.7
+djangorestframework==3.9.1
 djangorestframework-jwt==1.11.0
 Faker==0.8.12
 idna==2.6
