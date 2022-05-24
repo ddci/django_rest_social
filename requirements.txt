@@ -9,7 +9,7 @@ djangorestframework-jwt==1.11.0
 Faker==0.8.12
 idna==2.6
 pyhunter==0.3
-PyJWT==1.6.1
+PyJWT==2.4.0
 python-dateutil==2.7.2
 pytz==2018.3
 requests==2.18.4
